@@ -1,3 +1,5 @@
+require "sti_factory/railtie"
+
 module Koinonia
   module StiFactory
     def self.included(base)
