@@ -40,7 +40,12 @@ module Koinonia
         end
 
         def force_load_of_unreferenced_subclass( class_name )
-          require class_name.underscore unless Object.const_defined?(class_name)
+          begin
+            class_name.constantize
+          rescue NameError
+            require class_name.underscore
+            class_name.constantize
+          end
         end
     end
   end

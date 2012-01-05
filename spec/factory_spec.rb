@@ -131,4 +131,11 @@ describe Koinonia::StiFactory do
       Vehicle.new(:type => 'Jeep', :name => 'Unreferenced').should be_a_kind_of(Jeep)
     }.should_not raise_error
   end
+  
+   it "should force a load of an unreferenced subclass in a namespace" do
+    lambda{
+      Vehicle.class_eval "self.inheritance_column = 'type'"
+      Vehicle.new(:type => 'Vehicles::Atv', :name => 'Unreferenced').should be_a_kind_of(Vehicles::Atv)
+    }.should_not raise_error
+  end
 end
