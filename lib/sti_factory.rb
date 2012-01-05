@@ -1,4 +1,4 @@
-require "sti_factory/railtie"
+require "sti_factory/railtie" if Object.const_defined?("Rails")
 
 module Koinonia
   module StiFactory
